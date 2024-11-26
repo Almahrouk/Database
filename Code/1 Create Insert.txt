@@ -1,0 +1,65 @@
+DROP TABLE emp;
+DROP TABLE dept;
+DROP TABLE salgrade;
+
+CREATE TABLE emp (
+	empno INT CONSTRAINT Emp_Empno_PK PRIMARY KEY,
+	ename VARCHAR(10) NOT NULL,
+	job VARCHAR(10) NOT NULL,
+	SuperEno INT NULL,
+	hiredate DATE NOT NULL,
+	sal INT NOT NULL,
+	comm INT NULL,
+	deptno INT NOT NULL,
+CONSTRAINT Emp_SuperEno_FK FOREIGN KEY (SuperEno) REFERENCES Emp(empno) 
+);
+
+CREATE TABLE dept (
+	deptno INT NOT NULL PRIMARY KEY,
+	dname VARCHAR(10) NOT NULL,
+	loc VARCHAR(10) NOT NULL
+);
+
+
+
+CREATE TABLE salgrade (
+       grade INT NOT NULL PRIMARY KEY,
+       losal INT NOT NULL,
+       hisal INT NOT NULL
+);
+
+GRANT ALL ON emp TO PUBLIC;
+GRANT ALL ON dept TO PUBLIC;
+GRANT ALL ON salgrade TO PUBLIC;
+
+INSERT INTO emp VALUES (7839, 'King'  ,  'President', NULL, '17 NOV 2003' , 6500, NULL, 10);
+INSERT INTO emp VALUES (7566, 'Jones' ,  'Manager'  , 7839, '2 APR 2003'  , 3375, NULL, 20);
+INSERT INTO emp VALUES (7698, 'Blake' ,  'Manager'  , 7839, '1 MAY 2003'  , 3250, NULL, 30);
+INSERT INTO emp VALUES (7782, 'Clark' ,  'Manager'  , 7839, '9 JUN 2003'  , 2850, NULL, 10);
+INSERT INTO emp VALUES (7788, 'Scott' ,  'Analyst'  , 7566, '27 JUN 2002' , 3500, NULL, 20);
+INSERT INTO emp VALUES (7902, 'Ford'  ,  'Analyst'  , 7566, '3 DEC 2003'  , 3500, NULL, 20);
+INSERT INTO emp VALUES (7499, 'Allen' ,  'Salesman' , 7698, '20 FEB 2003' , 2000, 500,  30);
+INSERT INTO emp VALUES (7521, 'Ward'  ,  'Salesman' , 7698, '22 FEB 2003' , 1650, 800,  30);
+INSERT INTO emp VALUES (7654, 'Martin',  'Salesman' , 7698, '28 SEP 2003' , 1650, 1400, 30);
+INSERT INTO emp VALUES (7844, 'Turner',  'Salesman' , 7698, '8 SEP 2003'  , 1900, 0   , 30);
+INSERT INTO emp VALUES (7900, 'James' ,  'Clerk'    , 7698, '3 DEC 2003'  , 1350, NULL, 30);
+INSERT INTO emp VALUES (7934, 'Miller',  'Clerk'    , 7782, '23 JAN 2003',  1700, NULL, 10);
+INSERT INTO emp VALUES (7876, 'Adams' ,  'Clerk'    , 7788, '31 JUL 2002' , 1500, NULL, 20);
+INSERT INTO emp VALUES (7369, 'Smith' ,  'Clerk'    , 7902, '17 DEC 2002' , 1200, NULL, 20);
+
+INSERT INTO emp VALUES (7700, 'Jihad' ,  'Manager'  , 7839, '1 JAN 2002'  , 4000, NULL, 10);
+INSERT INTO emp VALUES (7701, 'Nader' ,  'Analyst'  , 7566, '25 Jun 2004' , 3750, NULL, 20);
+INSERT INTO emp VALUES (7702, 'Alaa'  ,  'Salesman' , 7698, '24 Dec 2004' , 2100, 850 , 30);
+INSERT INTO emp VALUES (7703, 'Wala'a',  'Clerk'    , 7700, '17 Oct 2004' , 1800, NULL, 10);
+
+
+INSERT INTO dept VALUES (10, 'Accounting', 'New York');
+INSERT INTO dept VALUES (20, 'Research', 'Dallas');
+INSERT INTO dept VALUES (30, 'Sales', 'Chicago');
+INSERT INTO dept VALUES (40, 'Operations', 'Boston');
+
+INSERT INTO salgrade VALUES (1, 1100, 1600);
+INSERT INTO salgrade VALUES (2, 1601, 1800);
+INSERT INTO salgrade VALUES (3, 1801, 2900);
+INSERT INTO salgrade VALUES (4, 2901, 3900);
+INSERT INTO salgrade VALUES (5, 3901,10000);

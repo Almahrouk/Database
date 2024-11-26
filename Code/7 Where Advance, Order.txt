@@ -1,0 +1,138 @@
+select * from emp;
+
+select EMPNO, ENAME, JOB, DEPTNO
+      from EMP;
+
+
+select EMPNO, ENAME, JOB, DEPTNO
+      from EMP
+      where DEPTNO = 10;
+
+
+select EMPNO, ENAME, JOB, DEPTNO
+      from EMP
+      where JOB = 'Manager';
+
+select EMPNO, ENAME, JOB, DEPTNO
+      from EMP
+      where DEPTNO = 10 
+      and JOB = 'Manager';
+
+////////////////////////// One (Date) (- /) (DD-MON-YY)
+
+select EMPNO, ENAME, JOB, DEPTNO, HIREDATE 
+      from EMP
+      where HIREDATE >= '01-JAN-03'; // OK
+
+
+select EMPNO, ENAME, JOB, DEPTNO, HIREDATE 
+      from EMP
+      where HIREDATE >= '1/1/2003';  // Error
+
+select EMPNO, ENAME, JOB, DEPTNO, HIREDATE 
+      from EMP
+      where HIREDATE >= 1-1-2003;  // Error
+
+select EMPNO, ENAME, JOB, DEPTNO, HIREDATE 
+      from EMP
+      where HIREDATE >= '01/JAN/03'; // OK
+
+
+select EMPNO, ENAME, JOB, DEPTNO, HIREDATE 
+      from EMP
+      where HIREDATE >= '01_JAN_03'; // Error
+
+select EMPNO, ENAME, JOB, DEPTNO, HIREDATE 
+      from EMP
+      where HIREDATE >= '01@JAN@03'; // Error
+
+select EMPNO, ENAME, JOB, DEPTNO, HIREDATE 
+      from EMP
+      where HIREDATE >= '01/JAN/2003'; // Error
+
+////////////////////// End One
+
+////////////////////// Two (and or not in -between and-)
+
+select EMPNO, ENAME, JOB, DEPTNO, SAL
+      from EMP
+      where 2000<SAL and SAL<5000; 
+
+select EMPNO, ENAME, JOB, DEPTNO, SAL
+      from EMP
+      where SAL between 2000 and 5000; 
+
+select EMPNO, ENAME, JOB, DEPTNO
+      from EMP
+      where DEPTNO = 10 or DEPTNO = 20; 
+
+select EMPNO, ENAME, JOB, DEPTNO
+      from EMP
+      where DEPTNO in (10, 20); 
+
+/////////////////////// End 2
+
+select EMPNO, ENAME, JOB, DEPTNO
+      from EMP
+      where ENAME like 'S%'; 
+
+
+select EMPNO, ENAME, JOB, DEPTNO
+      from EMP
+      where ENAME like '%m%'; 
+
+select EMPNO, ENAME, JOB, DEPTNO
+      from EMP
+      where ENAME like '%_08'; 
+
+select EMPNO, ENAME, JOB, DEPTNO
+      from EMP
+      where ENAME like 'M_l%'; 
+
+select EMPNO, ENAME, JOB, DEPTNO
+      from EMP
+      where COMM is null; 
+
+select EMPNO, ENAME, JOB, DEPTNO
+      from EMP
+      where COMM is not null; 
+
+
+//// end 3
+
+select EMPNO, ENAME, JOB, SUPERENO
+      from EMP
+      where SAL > 3000 or JOB = 'Clerk'; 
+////// end 4
+
+
+
+
+// Order by
+
+
+select EMPNO, ENAME, JOB, DEPTNO
+      from EMP
+      where COMM is null
+      order by DEPTNO; 
+
+
+select EMPNO, ENAME, JOB, DEPTNO
+      from EMP
+      where COMM is null
+      order by ENAME;
+
+
+select EMPNO, ENAME, JOB, DEPTNO
+      from EMP
+      where COMM is null
+      order by DEPTNO DESC; 
+
+
+
+
+////////////////
+
+select EMPNO, ENAME, JOB, SUPERENO
+      from EMP
+      where SAL > :sal_input; // From user

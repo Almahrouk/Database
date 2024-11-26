@@ -1,0 +1,35 @@
+select * from emp;
+
+select EMPNO, ENAME, SAL 
+from emp
+where ENAME = 'jones_08';
+
+
+select EMPNO, ENAME, SAL, INSTR(ENAME, 'a') as "A In Name"
+from emp;
+
+
+
+select EMPNO, ENAME, SAL, RPAD(	LPAD(SAL,7, '@'), 10, '*') As "One" 
+from emp;
+
+select EMPNO, ENAME, SAL, REPLACE (ENAME,'_08','') As "Two" 
+from emp;
+
+select EMPNO, ENAME, SAL,LENGTH(REPLACE (ENAME,'_08','')) As "Three" 
+from emp;
+
+select EMPNO, ENAME, JOB, SAL, CONCAT(REPLACE (ENAME,'_08',''), CONCAT(' his job is ', JOB)) NAME
+from emp;
+
+
+select ENAME, SAL, ROUND(SAL, 2), ROUND(SAL, 3), ROUND(SAL, 1), ROUND(SAL, 0), ROUND(SAL, -1), ROUND(SAL, -2)
+from emp
+where EMPNO = 7698;
+
+select * from emp;
+
+select ENAME, SYSDATE-HIREDATE from emp;
+
+select ENAME, NEXT_DAY (SYSDATE,'FRIDAY') As 'Next Friday'  from emp;
+

@@ -1,0 +1,35 @@
+select * from emp;
+select deptno from emp;
+select ename, sal, sal + 300 from emp;
+
+select ename, sal*12, 12*sal + 300 from emp;
+select ename, sal*12, 12*(sal + 300) from emp;
+
+select ename, sal, 2* sal + 300 from emp;
+select ename, sal, 2*(sal + 300) from emp;
+
+
+select ename, sal, (sal+comm)*12 from emp;
+
+select ename Name, sal "Salary", (sal+comm)*12 as "Years Salary" from emp;
+
+
+select ename , job from emp;
+select ename || job from emp;
+
+select ename || ' ' || job from emp;
+select ename || " " || job from emp; // error
+select ename || ' is a ' || job as "Employee Details" from emp;
+select ename || ' is a ' || job as 'Employee Details' from emp; // error
+
+
+select ename || q'[, it's assigned ]' || job as "Employee Details" from emp;
+
+
+select deptno from emp;
+select DISTINCT deptno from emp;
+
+
+
+
+

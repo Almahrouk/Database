@@ -1,0 +1,69 @@
+// List Emp Name's Where Sal > ('Allen_08'-Sal)   => Use Sub-Query
+SELECT ename, sal
+FROM emp
+WHERE sal >
+             (
+              SELECT sal
+              FROM emp
+              WHERE ename = 'Allen_08'
+             );
+
+SELECT *
+FROM emp
+WHERE HIREDATE <
+             (
+              SELECT HIREDATE
+              FROM emp
+              WHERE ename = 'Blake_08'
+             );
+
+
+SELECT ename, job, sal
+FROM emp
+WHERE SUPERENO =
+              (SELECT EMPNO
+               FROM emp
+               WHERE ENAME = 'King_08')
+AND sal <
+              (SELECT sal
+               FROM emp
+               WHERE EMPNO = 7788);
+
+
+
+
+SELECT *
+FROM emp
+WHERE sal >
+              (SELECT avg(sal)
+               FROM emp
+               WHERE DEPTNO = 10)
+ORDER BY DEPTNO;
+
+
+
+SELECT *
+FROM emp
+WHERE sal <
+              (SELECT min(avg(sal))
+               FROM emp
+               GROUP BY DEPTNO);
+
+
+SELECT avg(sal)
+FROM emp
+GROUP BY DEPTNO
+WHERE sal > (select sal from emp where ENAME = 'King_08');
+
+
+
+SELECT employee_id, last_name, job_id, salary
+FROM employees
+WHERE salary < ANY
+                   (SELECT salary
+                    FROM employees
+                    WHERE job_id = 'IT_PROG')
+AND job_id <> 'IT_PROG';
+
+
+select * from emp;
